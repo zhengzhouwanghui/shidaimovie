@@ -1,0 +1,38 @@
+<!--pages/item3/item3.wxml-->
+<!-- 电影明细 -->
+<loading hidden='{{!loading}}'>加载中...</loading>
+<!-- <scroll-view scroll-y='true' wx:if={{list.name}}> -->
+<scroll-view scroll-y='true'>
+    <view class='meta'>
+            <block wx:if='{{list.bigImage < 0}}'>
+                <image class='poster' src='{{list.bigImage}}' background-size='cover'></image>
+            </block>
+            <image class='poster' src='{{list.img}}' background-size='cover' wx:else></image>
+            <text class='title'>{{list.name}}({{list.nameEn}})</text>
+            <text class='rating' wx:if='{{list.overallRating > 0}}'>评分：{{list.overallRating}}</text>
+            <text class='rating' wx:else>评分：暂无评分</text>
+            <view class='director'>导演：<block wx:for='{{list.director.name}}'>{{item}}</block>
+            </view>
+            <view class='info'>
+                主演:<block wx:for='{{list.actors}}'><text>{{item.name}} / </text></block>
+            </view>
+    </view>
+    <view class='summary'>
+          <text class='label'>摘要：</text>
+          <text class='content'>{{list.story}}</text>
+    </view>
+        
+    
+    <!-- 热门评论部分 -->
+    <text class='label-t' wx:if='{{pic.length > 0}}'>热门评论：</text>
+    <text class='label-t' wx:else>暂无评论</text>
+    <view wx:for='{{pic}}' class='picbox'> 
+        <view class='pichead'>
+            <image src='{{item.headImg}}' class='headimg'></image>
+            <text>{{item.nickname}} / </text>
+            <text>用户评分：{{item.rating}}</text>
+        </view>
+        <text class='pictitle'>{{item.content}}</text>
+    </view>
+</scroll-view>
+

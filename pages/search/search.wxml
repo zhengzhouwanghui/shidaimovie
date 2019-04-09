@@ -1,0 +1,32 @@
+<!--pages/search/search.wxml-->
+ <view class='container'>
+  <loading hidden='{{!loading}}'>加载中...</loading>
+  <view class='page_row' >  
+      <view class="search">  
+        <view class="df search_arr">  
+          <icon class="searchcion" size='20' type='search'></icon>  
+          <input class="" placeholder="请输入关键字" type='text' focus='true' bindinput='wxSearchInput' value='{{keyword}}' bindconfirm='wxSearchFn' bindfocus="wxSerchFocus" bindblur="wxSearchBlur" placeholder='请输入搜索内容'/>  
+        </view>  
+      </view>
+      <view class='sousuo search' hover-class='button-hover' bindtap="search">搜索</view>  
+  </view> 
+  <!-- 标题 -->
+  <view class='list'>
+      <navigator wx:for="{{list}}" url='../item3/item3?id={{item.movieId}}' wx:key='key'>
+          <view class='list-item'>
+              <image src='{{item.img}}'></image>
+              <view class='info'>
+                  <text class='title'>{{item.t}}({{item.year}})</text>
+                  <text>{{item.commonSpecial}}</text>
+                  <text>导演：{{item.dN}}</text>
+              </view>
+              <view class='rating'>
+                  <text wx:if='{{item.r<=0}}'>暂无评分</text>
+                  <text wx:else>{{item.r}}</text>
+              </view>
+          </view>
+      </navigator>
+  </view>
+</view> 
+
+

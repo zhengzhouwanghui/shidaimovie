@@ -1,0 +1,24 @@
+<!--pages/list2/list2.wxml-->
+<view class='container'>
+  <loading hidden='{{!loading}}'>加载中...</loading>
+  <!-- 标题 -->
+  <view class='header'>
+      <text>正在热映</text>
+  </view>
+  <view class='list'>
+      <navigator wx:for="{{list}}" url='../item3/item3?id={{item.movieId}}' wx:key='key'>
+          <view class='list-item'>
+              <image src='{{item.img}}'></image>
+              <view class='info'>
+                  <text class='title'>{{item.t}}({{item.year}})</text>
+                  <text>{{item.commonSpecial}}</text>
+                  <text>导演：{{item.dN}}</text>
+              </view>
+              <view class='rating'>
+                  <text wx:if='{{item.r<0}}'>暂无评分</text>
+                  <text wx:else>{{item.r}}</text>
+              </view>
+          </view>
+      </navigator>
+  </view>
+</view>

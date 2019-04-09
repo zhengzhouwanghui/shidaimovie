@@ -1,0 +1,21 @@
+<!--pages/list3/list3.wxml-->
+<view class='container'>
+  <loading hidden='{{!loading}}'>加载中...</loading>
+  <!-- 标题 -->
+  <view class='header'>
+      <text>即将上映</text>
+  </view>
+  <view class='list'>
+      <navigator wx:for="{{list}}" url='../item3/item3?id={{item.id}}' wx:key='key'>
+          <view class='list-item'>
+              <image src='{{item.image}}'></image>
+              <view class='info'>
+                  <text class='title'>{{item.title}}({{item.rYear}})</text>
+                  <text>{{item.releaseDate}}-{{item.type}}</text>
+                  <text>主演：{{item.actor1}}、{{item.actor2}}</text>
+                  <text>导演：{{item.director}}({{item.locationName}})</text>
+              </view>
+          </view>
+      </navigator>
+  </view>
+</view>
